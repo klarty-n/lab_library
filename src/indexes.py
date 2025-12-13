@@ -6,7 +6,7 @@ from src.books import Book
 class IndexDict:
     """Базовый класс для индексации"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Инициализирует словарь для индексации (ключом может ыть как строка, так и число, например год изднаия ил автор)
         """
@@ -45,7 +45,7 @@ class IndexDict:
         """
         return iter(self.index)
 
-    def get(self, key: Any, default: BookCollection = None) -> BookCollection:
+    def get(self, key: Any, default: BookCollection | None = None) -> BookCollection:
         """
         :param key: ключ
         :param default: значение по умолчанию если не найден ключ (как в словарях)
@@ -172,7 +172,7 @@ class AuthorIndexDict(IndexDict):
             res += f"Найдено {len(collection)} книг от автора {author}:\n\n"
             for book in collection:
                 res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year}\n"
-            return res
+        return res
 
 
 class YearIndexDict(IndexDict):
@@ -233,8 +233,4 @@ class YearIndexDict(IndexDict):
             res += f"Найдено {len(collection)} книг {year} года издания:\n\n"
             for book in collection:
                 res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year}\n"
-            return res
-
-
-
-
+        return res
