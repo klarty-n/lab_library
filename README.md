@@ -8,22 +8,24 @@
 
 ### Структура проекта
 
+```
 lab_library/
 ├── src/
 │ ├── init.py
-│ ├── books.py # Класс Book
-│ ├── collection.py # Пользовательские коллекции (BookCollection, IndexDict и наследники)
-│ ├── library.py # Класс Library
-│ ├── simulation.py # Функция симуляции
-| |── main.py # Точка вход
-│ └── logger.py # Настройка логирования
+│ ├── books.py                   # Класс Book
+│ ├── collection.py              # Пользовательская списковая коллекция BookCollection
+│ ├── indexes.py                 # Пользовательсĸие словарнаые ĸоллеĸции для индеĸсов IndexDict и три производных от него 
+│ ├── library.py                 # Класс Library
+│ ├── simulation.py              # Функция симуляции
+| |── main.py                    # Точка вход
+│ └── logger.py                  # Настройка логирования
 ├── tests/
 │ ├── init.py
-│ ├── test_classes.py # Тесты для классов
-│ └── test_simulation.py # Тесты для симуляции
-├── requirements.txt # Зависимости
+│ ├── test_classes.py            # Тесты для классов
+│ └── test_simulation.py         # Тесты для симуляции
+├── requirements.txt             # Зависимости
 └── README.md 
-
+```
 
 ### Реализованные классы
 
@@ -67,4 +69,9 @@ lab_library/
 ### Запуск 
 
    ```bash
-   pip install -r requirements.txt
+   python -m src.main
+   ```
+   если находитесь в корне проекта:
+   ```bash
+   python src/main.py
+   ```
