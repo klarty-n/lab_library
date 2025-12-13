@@ -1,20 +1,31 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
+from src.simulation import run_simulation
 
 
-def main() -> None:
+def main():
     """
-    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
-    :return: Данная функция ничего не возвращает
+    Точка входа для запуска программы
     """
+    print("Начинаем симуляцию библиотеки (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ")
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
+    while True:
+        try:
+            steps = int(input("Введите количество шагов симуляции: "))
+            if steps < 0:
+                print("Количество шагов не может быть отрицательным, введите корректное число")
+                continue
+            break
+        except ValueError:
+            print("Введено некорректное число")
 
-    result = power_function(target=target, power=degree)
+    while True:
+        seed_user = input("Введите seed для генератора случайных чисел: ")
+        try:
+            seed = int(seed_user)
+            break
+        except ValueError:
+            print("Введите корректное число для seed")
 
-    print(result)
-
-    print(SAMPLE_CONSTANT)
+    run_simulation(steps=steps, seed=seed)
 
 if __name__ == "__main__":
     main()
