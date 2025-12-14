@@ -102,6 +102,7 @@ class ISBNIndexDict (IndexDict):
         """
         if isbn not in self.index:
             print(f"Книга с ISBN '{isbn}' не найдена")
+            return
 
         del self.index[isbn]
 
@@ -112,7 +113,7 @@ class ISBNIndexDict (IndexDict):
         res =''
         for isbn, collection in self.index.items():
             for book in collection:
-                res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year}\n"
+                res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year})\n"
         return res
 
 class AuthorIndexDict(IndexDict):
@@ -171,7 +172,7 @@ class AuthorIndexDict(IndexDict):
         for author, collection in self.index.items():
             res += f"Найдено {len(collection)} книг от автора {author}:\n\n"
             for book in collection:
-                res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year}\n"
+                res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year})\n"
         return res
 
 
@@ -232,5 +233,5 @@ class YearIndexDict(IndexDict):
         for year, collection in self.index.items():
             res += f"Найдено {len(collection)} книг {year} года издания:\n\n"
             for book in collection:
-                res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year}\n"
+                res += f"{book.isbn}: {book.title} ({book.genre}, {book.author}, {book.year})\n\n"
         return res

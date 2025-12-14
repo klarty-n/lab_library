@@ -20,6 +20,7 @@ class BookCollection:
         # Возвращаем книгу по индексу
         if not isinstance(key, slice):
             return self.books[key]
+
         # Возвращаем срез BookCollection
         else:
             sliced = self.books[key]
@@ -74,6 +75,3 @@ class BookCollection:
     def __repr__(self) -> str:
         """Возвращает строковое представление коллекции"""
         return f"Книги из коллекции: {self.books}"
-
-
-
