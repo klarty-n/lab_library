@@ -86,14 +86,18 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
             library.add_book(new_book)
             logger.info(f"       Добавлена книга: {new_book}")
 
-        elif type_of_event == "Удалить книгу" and len(library.get_all_books()) > 0:
-            books_list = list(library.get_all_books())
-            book_to_remove = random.choice(books_list)
-            success = library.remove_book(book_to_remove)
-            if success:
-                logger.info(f"       Удалена книга: {book_to_remove}")
+        elif type_of_event == "Удалить книгу":
+            if len(library.get_all_books()) > 0:
+                books_list = list(library.get_all_books())
+                book_to_remove = random.choice(books_list)
+                success = library.remove_book(book_to_remove)
+                if success:
+                    logger.info(f"       Удалена книга: {book_to_remove}")
+                else:
+                    logger.info(f"       Не удалось удалить книгу: {book_to_remove}")
             else:
-                logger.info(f"       Не удалось удалить книгу: {book_to_remove}")
+                logger.info("       Библотека пуста, удалять нечего")
+
 
         elif type_of_event == "Найти книги по автору":
             # Получаем список всех авторов
@@ -114,7 +118,7 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
 
         elif type_of_event == "Найти книги по жанру":
             genres = ["Роман", "Драма", "Фэнтези", "Научпоп", "Нон-фикшн",
-        "Детектив", "Поэзия", "Классика", "Трагедия"]
+            "Детектив", "Поэзия", "Классика", "Трагедия"]
             search_genre = random.choice(genres)
             found_books = library.search_by_genre(search_genre)
             logger.info(f"       Поиск книг жанра '{search_genre}': найдено {len(found_books)} книг")
@@ -155,4 +159,3 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
             logger.info(f"       Поиск книги с несуществующим ISBN '{unreal_isbn}': найдено {len(found_books)} книг")
             if len(found_books) == 0:
                 logger.info(f"       Книга с таким isbn {unreal_isbn} не найдена ")
-
